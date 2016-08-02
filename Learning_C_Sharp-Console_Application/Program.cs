@@ -16,16 +16,16 @@ namespace Learning_C_Sharp_Console_Application
         static void Main(string[] args)
         {
             // Prompt user to enter a name
-            Console.WriteLine("Enter your name, please: ");
+            Console.Write("Please enter your name: ");
 
             // Now read the name entered
             string name = Console.ReadLine();
 
             // Greet the user with the name that was entered.
-            Console.WriteLine("Hellow, " + name);
+            Console.WriteLine("\nThank you!. Hello " + name + ".\n");
 
             // Wait for user to acknowledge the results.
-            Console.WriteLine("Press Enter to terminate...");
+            Console.WriteLine("\n\nPress Enter to terminate...");
             Console.Read();
         }
     }
