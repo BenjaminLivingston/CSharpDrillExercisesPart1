@@ -10,10 +10,262 @@ using System.Threading.Tasks;
 
 namespace Learning_C_Sharp_Console_Application
 {
+
+    class Animal
+    {
+
+        public double height { get; set; }
+        public double weight { get; set; }
+        public string sound { get; set; }
+
+        public string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public Animal()
+        {
+            this.height = 0;
+            this.weight = 0;
+            this.name = "No Name";
+            this.sound = "No Sound";
+            numOfAnimals++;
+        }
+
+        public Animal(double height, double weight, string name, string sound)
+        {
+            this.height = height;
+            this.weight = weight;
+            this.name = name;
+            this.sound = sound;
+            numOfAnimals++;
+        }
+
+        static int numOfAnimals = 0;
+
+        public static int getNumOfAnimals()
+        {
+            return numOfAnimals;
+        }
+
+        // Method
+        public string toString()
+        {
+            return String.Format("{0} is {1} inches tall, wieghts {2} lbs and likes to say {3}.",
+                name, height, weight, sound);
+        }
+
+        // Method overloading -- allows passing in int or double to method
+        public int getSum(int num1 = 1, int num2 = 1)
+        {
+            return num1 + num2;
+        }
+
+        public double getSum(double num1 = 1, double num2 = 1)
+        {
+            return num1 + num2;
+        }
+
+
+        static void Main(string[] args)
+        {
+
+            Shape rect = new Rectangle(5, 5);
+            Shape tri = new Triangle(5, 5);
+
+            Console.WriteLine("Rectangle Area " + rect.area());
+            Console.WriteLine("Trinagle Area " + tri.area());
+
+            Rectangle combRect = new Rectangle(5, 5) + new Rectangle(5, 5);
+
+            Console.WriteLine("Combined Rectangle Area " + combRect.area());
+
+
+            Animal spot = new Animal(15, 10, "Spot", "Woof");
+
+            Console.WriteLine("{0} says {1}", spot.name, spot.sound);
+
+            Console.WriteLine("Number of Animals " + Animal.getNumOfAnimals());
+
+            Console.WriteLine(spot.toString());
+
+            Console.WriteLine(spot.getSum(num2: 1.4, num1: 2.7));
+
+            Animal grover = new Animal
+            {
+                name = "Grover",
+                height = 16,
+                weight = 18,
+                sound =  "Grrrr"
+            };
+
+
+            Dog spike = new Dog();
+
+            Console.WriteLine(spike.toString());
+
+            spike = new Dog(20, 15, "Spike", "Grr", "Chicken");
+
+            Console.WriteLine(spike.toString());
+
+
+
+            // Wait for user to acknowledge the results.
+            Console.WriteLine("\n\nPress Enter to terminate...");
+            Console.Read();
+
+        }
+    }
+
+
+
+
+    class Dog :Animal
+    {
+        public string favFood { get; set; }
+
+        public Dog():base()
+        {
+            this.favFood = "No Favorite Food";
+        }
+
+
+        public Dog(double height, double weight, string name, string sound, string favFood): 
+            base(height, weight, name, sound)
+        {
+            this.favFood = favFood;
+        }
+
+
+        new public string toString()
+        {
+            return String.Format("{0} is {1} inches tall, wieghts {2} lbs and likes to say {3} and eats {4}.",
+                name, height, weight, sound, favFood);
+        }
+    }
+        
+
+    // Abstract class example -- can't instatiate an object out of an abstract class
+    abstract class Shape
+    {
+        public abstract double area();
+
+        public void sayHi()
+        {
+            Console.WriteLine("Hello");
+        }
+    }
+
+
+    //Interface
+    public interface ShapeItem
+    {
+        double area();
+    }
+
+
+    class Rectangle : Shape
+    {
+
+        private double length;
+        private double width;
+
+        public Rectangle(double num1, double num2)
+        {
+            length = num1;
+            width = num2;
+        }
+
+        public override double area()
+        {
+            return length * width;
+        }
+
+
+        // Example of operator overload
+        public static Rectangle operator+(Rectangle rect1, Rectangle rect2)
+        {
+            double rectLength = rect1.length + rect2.length;
+            double rectwidth = rect1.width + rect2.width;
+
+            return new Rectangle(rectLength, rectwidth);
+        }
+    }
+
+
+    class Triangle : Shape
+    {
+
+        private double theBase;
+        private double height;
+
+        public Triangle(double num1, double num2)
+        {
+            theBase = num1;
+            height = num2;
+        }
+
+        public override double area()
+        {
+            return .5 * (theBase * height);
+        }
+    }
+
+
+    /*
     class Program
     {
+        static void Exception_Main(string[] args)
+        {
+
+            /*
+             *      EXCEPTION HANDLING
+             
+            
+            try
+            {
+                Console.Write("Divide 10 by ");
+                int num = int.Parse(Console.ReadLine());
+                Console.WriteLine("10 / {0} = {1}", num, (10 / num));
+            }
+
+            catch(DivideByZeroException ex)
+            {
+                Console.WriteLine("Can't divide by zero.");
+                Console.WriteLine(ex.GetType().Name);
+                Console.WriteLine(ex.Message);
+                // throw new InvalidOperationException("Operation Failed", ex); -- Can throw the exception
+            }
+
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.GetType().Name);
+                Console.WriteLine(ex.Message);
+            }
+
+
+
+            /*
+             *      OBJECTS & CLASSES
+             
+
+
+
+
+
+
+            // Wait for user to acknowledge the results.
+            Console.WriteLine("\n\nPress Enter to terminate...");
+            Console.Read();
+
+        }
+        
+
+
         // This is where the program starts.
-        static void Main(string[] args)
+        static void Basic_Main(string[] args)
         {
 
             // Prompt user to enter a name
@@ -28,7 +280,7 @@ namespace Learning_C_Sharp_Console_Application
 
             /*
                     Sample Variables
-             */
+             
 
             char grade = 'A';
             Console.WriteLine("\n" + name + ", you have received a grade of " + grade + " on C#.\n");
@@ -69,7 +321,7 @@ namespace Learning_C_Sharp_Console_Application
 
             /*
                     MATH
-             */
+             
             Console.WriteLine("5 + 3     = " + (5 + 3));
             Console.WriteLine("5 - 3     = " + (5 - 3));
             Console.WriteLine("5 x 3     = " + (5 * 3));
@@ -112,7 +364,7 @@ namespace Learning_C_Sharp_Console_Application
 
             /*
                     CONDITIONALS
-             */
+             
 
             // Relational Operators: > < >= <= == !=
             // Logical Operators: && || ^ !
@@ -187,13 +439,13 @@ namespace Learning_C_Sharp_Console_Application
              can use goto Cute in switch statement but commenting out for now
              Cute:
                 Console.WriteLine("Toddlers are cute.");
-             */
+             
 
 
 
             /*
              *      LOOPING
-             */
+             
             // If i wasn't already declared then below would be int i = 0 not just i
             i = 0;
 
@@ -250,7 +502,7 @@ namespace Learning_C_Sharp_Console_Application
 
             /*
              *      WORKING WITH STRINGS
-             */
+             
 
             // Use \ as an escape to print a character like \" or \\ for two backlashes
 
@@ -290,7 +542,7 @@ namespace Learning_C_Sharp_Console_Application
 
             /*
              *      STRING BUILDER
-             */
+             
 
             StringBuilder sb = new StringBuilder();
 
@@ -306,7 +558,7 @@ namespace Learning_C_Sharp_Console_Application
 
             /*
              *      ARRAYS
-             */
+             
 
             // int[] randNumArray;
 
@@ -362,7 +614,7 @@ namespace Learning_C_Sharp_Console_Application
 
             /*
              *      LISTS
-             */
+             
 
             List<int> numList = new List<int>();
 
@@ -410,4 +662,5 @@ namespace Learning_C_Sharp_Console_Application
             Console.Read();
         }
     }
+    */
 }
