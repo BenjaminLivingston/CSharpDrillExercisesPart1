@@ -291,9 +291,118 @@ namespace Learning_C_Sharp_Console_Application
             /*
              *      STRING BUILDER
              */
-            
-            
 
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("This is the first sentence. ");
+            sb.AppendFormat("My name is {0} and I live in {1}", "Sally", "Indiana");
+
+            sb.Replace("a", "e");
+
+            sb.Remove(5, 7);
+
+            Console.WriteLine(sb.ToString());
+
+
+            /*
+             *      ARRAYS
+             */
+
+            // int[] randNumArray;
+
+            int[] randArray = new int[5];
+
+            int[] randArray2 = { 1, 2, 3, 4, 5 };
+
+            Console.WriteLine("Array Length " + randArray2.Length);
+
+            Console.WriteLine("Item 0 " + randArray2[0]);
+
+            // If i wasn't already declared then below would be int i = 0 not just i
+            for (i = 0; i < randArray2.Length; i++)
+            {
+                Console.WriteLine("{0} : {1}", i, randArray2[i]);
+            }
+            
+            foreach(int num in randArray2)
+            {
+                Console.WriteLine(num);
+            }
+
+            Console.WriteLine("Where is 1: " + Array.IndexOf(randArray2, 1));
+
+            string[] otherNames = { "Bob", "Paul", "Sally" };
+
+            string nameStr = string.Join(", ", otherNames);
+
+            string[] nameArray = nameStr.Split(',');
+
+
+            int[,] multArray = new int[5, 3];
+
+            int[,] multArray2 = { { 0, 1 }, { 2, 3 }, { 4, 5 } };
+
+            
+            foreach(int num in multArray2)
+            {
+                Console.WriteLine(num);
+            }
+
+
+            for(int x = 0; x < multArray2.GetLength(0); x++)
+            {
+                for (int y = 0; y < multArray2.GetLength(1); y++)
+                {
+                    Console.WriteLine("{0} | {1} : {2}", x, y, multArray2[x, y]);
+                }
+            }
+
+
+
+
+            /*
+             *      LISTS
+             */
+
+            List<int> numList = new List<int>();
+
+            numList.Add(5);
+            numList.Add(15);
+            numList.Add(25);
+
+            int[] numArray = { 1, 2, 3, 4, 5 };
+            numList.AddRange(numArray);
+
+            //numList.Clear;
+
+            List<int> numList2 = new List<int>(numArray);
+
+            List<int> numList3 = new List<int>(new int[] { 1, 2, 3, 4 });
+
+            numList.Insert(1, 10);
+
+            numList.Remove(5);
+
+            numList.RemoveAt(2);
+            // If i wasn't already declared then below would be int i = 0 not just i
+            for (i = 0; i < numList.Count; i++)
+            {
+                Console.WriteLine(numList[i]);
+            }
+
+            // Get -1 if index isn't found
+            Console.WriteLine("4 is in index " + numList3.IndexOf(4));
+
+
+            Console.WriteLine("5 in list? " + numList.Contains(5));
+
+            List<string> strList = new List<string>(new string[] { "Tom", "Paul" });
+
+            Console.WriteLine("Tom is in the list? " + strList.Contains("tom", 
+                StringComparer.OrdinalIgnoreCase));
+
+
+            strList.Sort();
 
 
             // Wait for user to acknowledge the results.
