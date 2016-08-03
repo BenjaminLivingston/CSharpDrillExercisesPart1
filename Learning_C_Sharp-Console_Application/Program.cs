@@ -154,15 +154,32 @@ namespace Learning_C_Sharp_Console_Application
             switch(age)
             {
                 case 0:
-                    Console.WriteLine("Infant");
+                    Console.WriteLine("\nInfant");
                     break;
                 case 1:
                 case 2:
-                    Console.WriteLine("Toddler");
+                    Console.WriteLine("\nToddler");
                     break;
-                    //goto Cute;
+                //goto Cute;
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                    Console.WriteLine("\nChild");
+                    break;
                 default:
-                    Console.WriteLine("Child");
+                    Console.WriteLine("\nAdult");
                     break;
             }
 
@@ -171,6 +188,71 @@ namespace Learning_C_Sharp_Console_Application
              Cute:
                 Console.WriteLine("Toddlers are cute.");
              */
+
+
+
+            /*
+             *      LOOPING
+             */
+            // If i wasn't already declared then below would be int i = 0 not just i
+            i = 0;
+
+            while (i < 10)
+            {
+                if (i == 7)
+                {
+                    i++;
+                    continue;
+                }
+                
+                if (i == 9)
+                {
+                    break;
+                }
+
+                if ((i % 2) > 0)
+                {
+                    Console.WriteLine(i);
+                }
+                i++;
+            }
+
+
+            string guess;
+
+            do
+            {
+                Console.WriteLine("Guess a Number ");
+                guess = Console.ReadLine();
+
+            } while (!guess.Equals("15"));
+
+
+            // If i wasn't already declared then below would be int i = 0 not just i
+            for (i = 0; i<10; i++)
+            {
+                if ((i % 2) > 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+
+
+
+            string randStr = "Here are some random characters";
+
+            foreach(char c in randStr)
+            {
+                Console.WriteLine(c);
+            }
+
+
+
+            /*
+             *      WORKING WITH STRINGS
+             */
+
+
 
 
 
