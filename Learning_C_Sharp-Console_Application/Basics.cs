@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,79 @@ using System.Threading.Tasks;
 
 #endregion Public methods
 
+
+// Delegates -- passing methods as arguments
+delegate double GetSum(double num1, double num2);
+
+
+
 namespace Learning_C_Sharp_Console_Application
 {
+
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+
+            // Working with file(system) I/O
+            string[] custs = new string[] { "Susan", "Bob", "Sally" };
+
+            using (StreamWriter sw = new StreamWriter("custs.txt"))
+            {
+                foreach (string cust in custs)
+                {
+                    sw.WriteLine(cust);
+                }
+            }
+
+
+            string custName = "";
+            using (StreamReader sr = new StreamReader("custs.txt"))
+            {
+                while ((custName = sr.ReadLine())!=null)
+                {
+                    Console.WriteLine(custName);
+                }
+            }
+
+
+                // Wait for user to acknowledge the results.
+                Console.WriteLine("\n\nPress any key to continue . . .");
+            Console.Read();
+
+        }
+    }
+
+
+
+
+    /*
+    
+    // Struct type example
+    struct Customers
+    {
+        private string name;
+        private double balance;
+        private int id;
+
+        public void createCust(string n, double b, int i)
+        {
+            name = n;
+            balance = b;
+            id = i;
+        }
+
+        public void showCust()
+        {
+            Console.WriteLine("Name: " + name);
+            Console.WriteLine("Balance: " + balance);
+            Console.WriteLine("ID: " + id);
+
+        }
+    }
+
 
     // Enum example
     public enum Temperature
@@ -20,47 +92,9 @@ namespace Learning_C_Sharp_Console_Application
         Warm,
         Boil
     }
-
-
-    class Program
-    {
-
-        static void Main(string[] args)
-        {
-
-            Temperature micTemp = Temperature.Low;
-
-            switch (micTemp)
-            {
-                case Temperature.Freeze:
-                    Console.WriteLine("Temp is Freezing");
-                    break;
-
-                case Temperature.Low:
-                    Console.WriteLine("Temp on Low");
-                    break;
-
-                case Temperature.Warm:
-                    Console.WriteLine("Temp on Warm");
-                    break;
-
-                case Temperature.Boil:
-                    Console.WriteLine("Temp is Boiling");
-                    break;
-            }
-
-
-            // Wait for user to acknowledge the results.
-            Console.WriteLine("\n\nPress any key to continue . . .");
-            Console.Read();
-
-        }
-    }
-
-
-
-
-    /*
+    
+     
+    
     class Animal
     {
 
@@ -121,6 +155,66 @@ namespace Learning_C_Sharp_Console_Application
 
         static void Main(string[] args)
         {
+            
+
+
+
+            // lamda expression example
+            Func<int, int, int> getSum = (x, y) => x + y;
+
+            Console.WriteLine("5 + 3 = " + getSum.Invoke(5, 3));
+
+
+            List<int> numList = new List<int> { 5, 10, 15, 20, 25 };
+
+            List<int> oddNums = numList.Where(n => n % 2 == 1).ToList();
+
+            foreach(int num in oddNums)
+            {
+                Console.WriteLine(num + ", ");
+            }
+
+
+             // Anonymous method example
+            GetSum sum = delegate (double num1, double num2)
+            {
+                return num1 + num2;
+            };
+
+            Console.WriteLine("5 + 10 = " + sum(5, 10));
+
+
+            // Using Struct Example
+            Customers sally = new Customers();
+
+            sally.createCust("Sally", 15.50, 12345);
+
+            sally.showCust();
+
+
+
+            // Using enum example
+            Temperature micTemp = Temperature.Low;
+
+            switch (micTemp)
+            {
+                case Temperature.Freeze:
+                    Console.WriteLine("Temp is Freezing");
+                    break;
+
+                case Temperature.Low:
+                    Console.WriteLine("Temp on Low");
+                    break;
+
+                case Temperature.Warm:
+                    Console.WriteLine("Temp on Warm");
+                    break;
+
+                case Temperature.Boil:
+                    Console.WriteLine("Temp is Boiling");
+                    break;
+            }
+
 
             Shape rect = new Rectangle(5, 5);
             Shape tri = new Triangle(5, 5);
