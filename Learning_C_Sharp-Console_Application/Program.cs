@@ -252,7 +252,47 @@ namespace Learning_C_Sharp_Console_Application
              *      WORKING WITH STRINGS
              */
 
+            // Use \ as an escape to print a character like \" or \\ for two backlashes
 
+            string sampString = "A bunch of random words";
+
+            Console.WriteLine("\nIs empty?: " + String.IsNullOrEmpty(sampString));
+
+            Console.WriteLine("\nIs empty?: " + String.IsNullOrWhiteSpace(sampString));
+
+            Console.WriteLine("\nThe length of the string is: " + sampString.Length);
+
+            Console.WriteLine("\nIndex of bunch: " + sampString.IndexOf("bunch"));
+
+            Console.WriteLine("\n2nd Word: " + sampString.Substring(2, 6));
+
+            string sampString2 = "More random words";
+
+            Console.WriteLine("\nStrings are equal: " + sampString.Equals(sampString2));
+
+            Console.WriteLine("\nStarts with \"A bunch\": " + sampString.StartsWith("A bunch"));
+
+            Console.WriteLine("\nEnds with \"words\": " + sampString.EndsWith("words"));
+
+            // sampString = sampString.Trim();
+            // TrimEnd, TrimStart for just triming beginning or end
+            sampString = sampString.Replace("words", "characters");
+            sampString = sampString.Remove(0, 2);
+
+            string[] names = new string[3] { "Matt", "Joe", "Paul" };
+
+            Console.WriteLine("Name List " + String.Join(", ", names));
+
+            string fmtStr = String.Format("{0:c} {1:00.00} {2:#.00} {3:0,0}", 1.56, 15.567, .56, 1000);
+
+            Console.WriteLine(fmtStr);
+
+
+            /*
+             *      STRING BUILDER
+             */
+            
+            
 
 
 
