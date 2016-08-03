@@ -29,7 +29,6 @@ namespace Learning_C_Sharp_Console_Application
             /*
                     Sample Variables
              */
-            bool canVote = true;
 
             char grade = 'A';
             Console.WriteLine("\n" + name + ", you have received a grade of " + grade + " on C#.\n");
@@ -109,6 +108,71 @@ namespace Learning_C_Sharp_Console_Application
 
             Random rand = new Random();
             Console.WriteLine("\nA random Number between 1 and 10 is " + (rand.Next(1,11)));
+
+
+            /*
+                    CONDITIONALS
+             */
+
+            // Relational Operators: > < >= <= == !=
+            // Logical Operators: && || ^ !
+            int age = 17;
+
+            if ((age >= 5) && (age <=7))
+            {
+                Console.WriteLine("\nYou should attend elementary school.");
+            }else if ((age > 7) && (age <= 13))
+            {
+                Console.WriteLine("\nYou should attend middle school.");
+            }else if ((age > 13) && (age <= 18))
+            {
+                Console.WriteLine("\nYou should attend high school.");
+            }else if (age < 5)
+            {
+                Console.WriteLine("\nYou are not old enough to attend school.");
+            }else
+            {
+                Console.WriteLine("\nYou do not have to attend school anymore.");
+            }
+
+            if ((age < 14) || (age > 67))
+            {
+                Console.WriteLine("\nYou do not need to work.");
+            }
+
+
+            bool canVote = (age >= 18) ? true : false;
+            if (canVote == true)
+            {
+                Console.WriteLine("\nYou can legally vote.");
+            }else
+            {
+                Console.WriteLine("\nYou cannot legally vote.");
+            }
+
+
+            switch(age)
+            {
+                case 0:
+                    Console.WriteLine("Infant");
+                    break;
+                case 1:
+                case 2:
+                    Console.WriteLine("Toddler");
+                    break;
+                    //goto Cute;
+                default:
+                    Console.WriteLine("Child");
+                    break;
+            }
+
+            /*
+             can use goto Cute in switch statement but commenting out for now
+             Cute:
+                Console.WriteLine("Toddlers are cute.");
+             */
+
+
 
             // Wait for user to acknowledge the results.
             Console.WriteLine("\n\nPress Enter to terminate...");
