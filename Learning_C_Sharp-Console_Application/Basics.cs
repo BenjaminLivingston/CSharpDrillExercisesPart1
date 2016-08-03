@@ -11,8 +11,56 @@ using System.Threading.Tasks;
 namespace Learning_C_Sharp_Console_Application
 {
 
+    // Enum example
+    public enum Temperature
+    {
+        // Can use Freeze = 1 to start numbering at 1, etc instead of 0
+        Freeze,
+        Low,
+        Warm,
+        Boil
+    }
 
 
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            Temperature micTemp = Temperature.Low;
+
+            switch (micTemp)
+            {
+                case Temperature.Freeze:
+                    Console.WriteLine("Temp is Freezing");
+                    break;
+
+                case Temperature.Low:
+                    Console.WriteLine("Temp on Low");
+                    break;
+
+                case Temperature.Warm:
+                    Console.WriteLine("Temp on Warm");
+                    break;
+
+                case Temperature.Boil:
+                    Console.WriteLine("Temp is Boiling");
+                    break;
+            }
+
+
+            // Wait for user to acknowledge the results.
+            Console.WriteLine("\n\nPress any key to continue . . .");
+            Console.Read();
+
+        }
+    }
+
+
+
+
+    /*
     class Animal
     {
 
@@ -237,8 +285,7 @@ namespace Learning_C_Sharp_Console_Application
 
 
 
-    // Generics, Enums, Structs, Anonymous Methods, Lambda Expressions, & File I/O
-    // Generic Example
+    // Generic Type Example
     class KeyValue<TKey, TValue>
     {
         
@@ -259,11 +306,6 @@ namespace Learning_C_Sharp_Console_Application
     }
     
 
-        
-        
-
-
-        /*
         class Program
         {
             static void Exception_Main(string[] args)
