@@ -11,77 +11,6 @@ namespace Learning_C_Sharp_Console_Application
 
     class Program
     {
-
-        static void Main(string[] args)
-        {
-
-            // Using LINQ
-            var people = new List<Person>
-            {
-                new Person { FirstName = "John", LastName = "Doe", Age = 25},
-                new Person { FirstName = "Jane", LastName = "Doe", Age = 26},
-                new Person { FirstName = "John", LastName = "Williams", Age = 40},
-                new Person { FirstName = "Samantha", LastName = "Williams", Age = 35},
-                new Person { FirstName = "Bob", LastName = "Walters", Age = 12 },
-            };
-
-
-            var result = from p in people
-                             //where p.Age < 30 && p.LastName == "Doe"
-                         orderby p.LastName descending
-                         group p by p.LastName;
-                         //select p;
-
-            foreach (var item in result)
-            {
-                Console.WriteLine(item.Key + " - " + item.Count());
-
-                foreach (var p in item)
-                {
-                    Console.WriteLine("\t{0}, {1}", p.LastName, p.FirstName);
-                }
-                Console.WriteLine("\n");
-                //Console.WriteLine("{0} - {1}", item.LastName, item.FirstName);
-            }
-
-
-
-
-            //var sample = "A sentence used as a sample for using linq in C#.";
-
-            //var result = from c in sample.ToLower()
-                        // where c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
-                        // orderby c descending
-                        // group c by c;
-                         
-                         //select c;
-
-
-
-            //foreach (var item in result)
-            //{
-                // if doing with order by
-                //Console.WriteLine(item);
-                
-                // if doing with group by
-                //Console.WriteLine("{0} - {1}", item.Key, item.Count());
-
-            //}
-
-
-            // Wait for user to acknowledge the results.
-            Console.WriteLine("\n\nPress any key to continue . . .");
-            Console.Read();
-
-        }
-    }
-
-
-    public class Person
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
     }
 
 
@@ -93,6 +22,14 @@ namespace Learning_C_Sharp_Console_Application
     // Delegates -- used with passing methods as arguments
     delegate double GetSum(double num1, double num2);
     #endregion Public methods
+
+
+     public class Person
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+    }
 
 
 
@@ -193,6 +130,60 @@ namespace Learning_C_Sharp_Console_Application
 
             static void Main(string[] args)
             {
+
+             // Using LINQ
+            var people = new List<Person>
+            {
+                new Person { FirstName = "John", LastName = "Doe", Age = 25},
+                new Person { FirstName = "Jane", LastName = "Doe", Age = 26},
+                new Person { FirstName = "John", LastName = "Williams", Age = 40},
+                new Person { FirstName = "Samantha", LastName = "Williams", Age = 35},
+                new Person { FirstName = "Bob", LastName = "Walters", Age = 12 },
+            };
+
+
+            var result = from p in people
+                             //where p.Age < 30 && p.LastName == "Doe"
+                         orderby p.LastName descending
+                         group p by p.LastName;
+                         //select p;
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.Key + " - " + item.Count());
+
+                foreach (var p in item)
+                {
+                    Console.WriteLine("\t{0}, {1}", p.LastName, p.FirstName);
+                }
+                Console.WriteLine("\n");
+                //Console.WriteLine("{0} - {1}", item.LastName, item.FirstName);
+            }
+
+
+
+
+            //var sample = "A sentence used as a sample for using linq in C#.";
+
+            //var result = from c in sample.ToLower()
+                        // where c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+                        // orderby c descending
+                        // group c by c;
+                         
+                         //select c;
+
+
+
+            //foreach (var item in result)
+            //{
+                // if doing with order by
+                //Console.WriteLine(item);
+                
+                // if doing with group by
+                //Console.WriteLine("{0} - {1}", item.Key, item.Count());
+
+            //}
+
 
                 // Working with file(system) I/O
                 string[] custs = new string[] { "Susan", "Bob", "Sally" };
