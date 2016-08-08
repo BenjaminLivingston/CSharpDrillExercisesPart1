@@ -52,8 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basics.cs" />
-    <Compile Include="Drill_Exercises.cs" />
+    <Compile Include="Notes.cs" />
+    <Compile Include="Exercises.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

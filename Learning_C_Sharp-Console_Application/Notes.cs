@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,9 +14,6 @@ namespace Learning_C_Sharp_Console_Application
     {
     }
 
-
-
-    /*
 
 
     #region Public methods
@@ -896,5 +894,6 @@ namespace Learning_C_Sharp_Console_Application
                     Console.Read();
                 }
             }
-            */
+            
 }
+*/
