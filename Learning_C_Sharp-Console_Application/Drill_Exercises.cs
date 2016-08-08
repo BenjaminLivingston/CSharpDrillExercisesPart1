@@ -9,31 +9,24 @@ using System.Threading.Tasks;
 
 namespace Learning_C_Sharp_Console_Application
 {
-    class Drill_Exercises
+    class drillExercises
     {
 
-        // Overloading Methods Example
-        public int mathOperation(int num1, int num2)
+        // Code being reused for utility purposes
+        public void clrScreen()
         {
-            return num1 * num2;
+            Console.WriteLine("\n\nPress any key to continue . . .");
+            Console.ReadLine();
+            Console.Clear();
+            return;
         }
-
-        public double mathOperation(double num1, double num2)
-        {
-            return num1 * num2;
-        }
-        
-        
-
-        // Overriding Methods Example
-
 
 
 
         static void Main(string[] args)
         {
 
-            Drill_Exercises ex = new Drill_Exercises();
+            drillExercises ex = new drillExercises();
 
             // Overloading Methods Example
             Console.WriteLine("\nThis is an example of overloading a method.");
@@ -57,37 +50,94 @@ namespace Learning_C_Sharp_Console_Application
             Console.WriteLine("{0}x{1} is equal to {2}", float1, float2, float3);
 
 
-            // Clear console intbetween examples
+            // Clear console in between examples
             ex.clrScreen();
 
 
             // Overriding Methods Example
             Console.WriteLine("\nThis is an example of overriding a method.");
+            Console.WriteLine("\nA class can be made as a child of another class and it");
+            Console.WriteLine("will inherit the methods associated with that class.");
+            Console.WriteLine("Overriding a method allows a method inherited from a parent");
+            Console.WriteLine("to be altered but still have the same method name.");
+            Console.WriteLine("For example, let's create two employee classes.  One is a");
+            Console.WriteLine("line cook in a restaurant and the other is a server.  Servers");
+            Console.WriteLine("receive tips and these are reflected in their pay at this");
+            Console.WriteLine("restaurant.  A method to calculate pay will be overridden");
+            Console.WriteLine("so that the payment amount for the server reflects the tips.");
+
+            // Create the two employee examples
+            Employee kitchenStaff1 = new Employee("Sarah", 12.5);
+            Server frontStaff1 = new Server("Jorge",9.25, 435.65);
+
+            // Return example of overrides
+            Console.WriteLine("\nThe line cook, " + kitchenStaff1.empName +
+                ", earned: " + kitchenStaff1.getTotalPay(34.5) + " during the pay period.");
+
+            Console.WriteLine("\nThe server,  " + frontStaff1.empName +
+                ", earned: " + frontStaff1.getTotalPay(26) + " during the pay period.");
 
 
-
-
-
-            // Wait for user to acknowledge the results.
-            Console.WriteLine("\n\nPress any key to continue . . .");
-            Console.Read();
+            // Clear console in between examples
+            ex.clrScreen();
 
         }
 
-
-       
-
-
-        // Code being reused for utility purposes
-        public void clrScreen()
+        
+        // Overloading Methods
+        public int mathOperation(int num1, int num2)
         {
-            Console.WriteLine("\n\nPress any key to continue . . .");
-            Console.Read();
-            Console.Clear();
-            return;
+            return num1 * num2;
         }
 
-       
+        public double mathOperation(double num1, double num2)
+        {
+            return num1 * num2;
+        }
+
+
+
+        // Overriding Methods Classes
+        public class Employee
+        {
+            public string empName;
+            public double hrRate;
+            protected double payAmount;
+
+            // Employee construtor
+            public Employee(string empName, double hrRate)
+            {
+                this.empName = empName;
+                this.hrRate = hrRate;
+            }
+
+            // Get Total payment method -- virtual to allow overriding
+            public virtual double getTotalPay(double hoursWorked)
+            {
+                payAmount = hrRate * hoursWorked;
+                return payAmount;
+            }
+        }
+
+        // Server class derived from Employee
+        public class Server : Employee
+        {
+            private double tips;
+
+            public Server(string empName, double hrRate,
+                double tips) : base(empName, hrRate)
+            {
+                this.tips = tips;
+            }
+
+            // Override getTotalPay
+            public override double getTotalPay(double hoursWorked)
+            {
+                payAmount = hrRate * hoursWorked;
+                return payAmount + tips;
+            }
+        }
+
 
 
     }
